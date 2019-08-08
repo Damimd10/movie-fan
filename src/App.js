@@ -13,6 +13,7 @@ import SearchBar from './components/SearchBar';
 function App() {
   const [movieList, setMovieList] = useState([]);
   const [selectedStars, setSelectedStars] = useState(0);
+  const [error, setError] = useState(null);
 
   const onFilterChange = index =>
     setSelectedStars(index === selectedStars ? 0 : index);
@@ -22,7 +23,12 @@ function App() {
       `${URL}/${ENDPOINT}?api_key=${process.env.REACT_APP_MOVIE_KEY}&${FILTER_BY_POPULARITY}`
     )
       .then(response => response.json())
-      .then(toJson => setMovieList(toJson.results));
+      .then(toJson => setMovieList(toJson.results) && setError(null))
+      .catch(() =>
+        setError(
+          'Sorry we have some problems with the server currently, try again'
+        )
+      );
   }, []);
 
   const searchMovie = title => {
@@ -30,7 +36,12 @@ function App() {
       `${URL}/${BY_TITLE_ENDPOINT}?api_key=${process.env.REACT_APP_MOVIE_KEY}&query=${title}`
     )
       .then(response => response.json())
-      .then(toJson => setMovieList(toJson.results));
+      .then(toJson => setMovieList(toJson.results) && setError(null))
+      .catch(() =>
+        setError(
+          'Sorry we have some problems with the server currently, try again'
+        )
+      );
   };
 
   const fromRate = selectedStars * 2 - 2;
@@ -49,7 +60,7 @@ function App() {
         stars={selectedStars}
         whenFilterChange={onFilterChange}
       />
-      <MovieList movies={movies} />
+      {error || <MovieList movies={movies} />}
     </div>
   );
 }
