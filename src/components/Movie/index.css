@@ -1,0 +1,14 @@
+.movie-container {
+  margin: 1rem;
+}
+
+.none-poster {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 342px;
+  height: 513px;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+}
