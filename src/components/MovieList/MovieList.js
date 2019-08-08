@@ -6,15 +6,19 @@ import Movie from '../Movie';
 
 const MovieList = ({ movies }) => (
   <div className="movie-list-container">
-    {movies.map(movie => (
-      <Movie
-        key={movie.id}
-        poster={movie.poster_path}
-        title={movie.title}
-        votes={movie.vote_average}
-        popularity={movie.popularity}
-      />
-    ))}
+    {movies.length > 0 ? (
+      movies.map(movie => (
+        <Movie
+          key={movie.id}
+          poster={movie.poster_path}
+          title={movie.title}
+          rating={movie.vote_average}
+          popularity={movie.popularity}
+        />
+      ))
+    ) : (
+      <span>We can't found any movie :(</span>
+    )}
   </div>
 );
 
