@@ -33,8 +33,8 @@ function App() {
       .then(toJson => setMovieList(toJson.results));
   };
 
-  const fromRate = selectedStars * 2;
-  const toRate = selectedStars * 2 + 2;
+  const fromRate = selectedStars * 2 - 2;
+  const toRate = selectedStars * 2;
   const movies =
     selectedStars > 0
       ? movieList.filter(
