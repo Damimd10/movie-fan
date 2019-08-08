@@ -1,11 +1,10 @@
 import React from 'react';
-import { number, string } from 'prop-types';
+import { func, number, string } from 'prop-types';
+import { IMAGE_BASE_URL } from '../../constants';
 import './index.css';
 
-const IMAGE_BASE_URL = 'http://image.tmdb.org/t/p/w342';
-
-const Movie = ({ popularity, poster, title, rating }) => (
-  <section className="movie-container">
+const Movie = ({ handleClick, popularity, poster, title, rating }) => (
+  <section className="movie-container" onClick={handleClick}>
     {poster ? (
       <img src={`${IMAGE_BASE_URL}/${poster}`} alt="Poster" />
     ) : (
@@ -18,6 +17,7 @@ const Movie = ({ popularity, poster, title, rating }) => (
 );
 
 Movie.propTypes = {
+  handleClick: func.isRequired,
   popularity: number,
   poster: string,
   title: string.isRequired,

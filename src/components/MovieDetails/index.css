@@ -1,0 +1,24 @@
+.movie-details-container {
+  display: flex;
+  justify-content: center;
+}
+
+.movie-details-bio {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+.overview-details {
+  margin: 1rem 0;
+}
+
+.movie-info {
+  font-weight: bold;
+}
+
+.button-back {
+  width: 200px;
+  height: 50px;
+  border-radius: 0.3rem;
+}
