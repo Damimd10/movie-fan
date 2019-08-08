@@ -1,0 +1,14 @@
+.star {
+  font-size: 2em;
+  color: #cfd8dc;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.active {
+  color: #ffeb3b;
+}
+
+.inactive {
+  color: gray;
+}
